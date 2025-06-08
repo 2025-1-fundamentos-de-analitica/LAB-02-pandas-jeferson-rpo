@@ -4,13 +4,21 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
-
-
+import pandas as pd
+import os
 def pregunta_01():
-    """
-    ¿Cuál es la cantidad de filas en la tabla `tbl0.tsv`?
+    
+    base_path = os.path.dirname(__file__)        # carpeta del script
+    parent_path = os.path.dirname(base_path)     # subir un nivel
+    file_path = os.path.join(parent_path, "files", "input", "tbl0.tsv")
+    print("Leyendo archivo en:", file_path)     # para debug
+    tbl0 = pd.read_csv(file_path, sep="\t")
+    return len(tbl0)
+
+"""
+    ¿Cuál es la cantidad de filas en la tabla tbl0.tsv?
 
     Rta/
     40
-
-    """
+    esto es utilizando pandas
+""" 

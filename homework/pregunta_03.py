@@ -5,11 +5,20 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
+import os
 
 def pregunta_03():
-    """
-    ¿Cuál es la cantidad de registros por cada letra de la columna `c1` del
-    archivo `tbl0.tsv`?
+    base_path = os.path.dirname(__file__)
+    parent_path = os.path.dirname(base_path)
+    file_path = os.path.join(parent_path, "files", "input", "tbl0.tsv")
+    tbl0 = pd.read_csv(file_path, sep="\t")
+    # Contar cantidad por cada valor de 'c1'
+    return tbl0['c1'].value_counts().sort_index()
+
+"""
+    ¿Cuál es la cantidad de registros por cada letra de la columna c1 del
+    archivo tbl0.tsv?
 
     Rta/
     c1
@@ -20,4 +29,4 @@ def pregunta_03():
     E    14
     Name: count, dtype: int64
 
-    """
+"""

@@ -6,8 +6,19 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+import os
+
 def pregunta_08():
-    """
+    base_path = os.path.dirname(__file__)
+    parent_path = os.path.dirname(base_path)
+    file_path = os.path.join(parent_path, "files", "input", "tbl0.tsv")
+    tbl0 = pd.read_csv(file_path, sep="\t")
+    tbl0["suma"] =  tbl0['c0'] + tbl0['c2']
+    return tbl0
+    
+    
+"""
     Agregue una columna llamada `suma` con la suma de `c0` y `c2` al
     data frame que contiene el archivo `tbl0.tsv`.
 
@@ -21,4 +32,4 @@ def pregunta_08():
     38   38   E    1  1999-09-28    39
     39   39   E    5  1998-01-26    44
 
-    """
+"""

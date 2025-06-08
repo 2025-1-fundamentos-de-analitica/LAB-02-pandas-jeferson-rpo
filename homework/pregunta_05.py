@@ -5,11 +5,19 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
+import os
 
 def pregunta_05():
-    """
-    Calcule el valor máximo de `c2` por cada letra en la columna `c1` del
-    archivo `tbl0.tsv`.
+    base_path = os.path.dirname(__file__)
+    parent_path = os.path.dirname(base_path)
+    file_path = os.path.join(parent_path, "files", "input", "tbl0.tsv")
+    tbl0 = pd.read_csv(file_path, sep="\t")
+    return tbl0.groupby('c1')['c2'].max()
+
+"""
+    Calcule el valor máximo de c2 por cada letra en la columna c1 del
+    archivo tbl0.tsv.
 
     Rta/
     c1
@@ -19,4 +27,4 @@ def pregunta_05():
     D    7
     E    9
     Name: c2, dtype: int64
-    """
+"""

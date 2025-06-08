@@ -6,11 +6,20 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+import os
+
 def pregunta_02():
-    """
-    ¿Cuál es la cantidad de columnas en la tabla `tbl0.tsv`?
+    base_path = os.path.dirname(__file__)
+    parent_path = os.path.dirname(base_path)
+    file_path = os.path.join(parent_path, "files", "input", "tbl0.tsv")
+    tbl0 = pd.read_csv(file_path, sep="\t")
+    return len(tbl0.columns)
+
+"""
+    ¿Cuál es la cantidad de columnas en la tabla tbl0.tsv?
 
     Rta/
     4
 
-    """
+"""

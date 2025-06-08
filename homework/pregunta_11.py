@@ -5,9 +5,25 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
+import os
 
 def pregunta_11():
-    """
+    base_path = os.path.dirname(__file__)
+    parent_path = os.path.dirname(base_path)
+    file_path = os.path.join(parent_path, "files", "input", "tbl1.tsv")
+    
+    tbl1 = pd.read_csv(file_path, sep="\t")
+    
+    result = (
+        tbl1.groupby('c0')['c4']
+        .apply(lambda x: ','.join(sorted(x)))
+        .reset_index()
+    )
+
+    return result
+
+"""
     Construya una tabla que contenga `c0` y una lista separada por ',' de
     los valores de la columna `c4` del archivo `tbl1.tsv`.
 
@@ -21,4 +37,4 @@ def pregunta_11():
     37   37  a,c,e,f
     38   38      d,e
     39   39    a,d,f
-    """
+"""

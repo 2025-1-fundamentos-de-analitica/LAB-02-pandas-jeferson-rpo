@@ -5,11 +5,20 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
+import os
 
 def pregunta_04():
-    """
-    Calcule el promedio de `c2` por cada letra de la `c1` del archivo
-    `tbl0.tsv`.
+    base_path = os.path.dirname(__file__)
+    parent_path = os.path.dirname(base_path)
+    file_path = os.path.join(parent_path, "files", "input", "tbl0.tsv")
+    tbl0 = pd.read_csv(file_path, sep="\t")
+    # Agrupar por 'c1' y calcular promedio de 'c2'
+    return tbl0.groupby('c1')['c2'].mean()
+
+"""
+    Calcule el promedio de c2 por cada letra de la c1 del archivo
+    tbl0.tsv.
 
     Rta/
     c1
@@ -19,4 +28,4 @@ def pregunta_04():
     D    3.833333
     E    4.785714
     Name: c2, dtype: float64
-    """
+"""
